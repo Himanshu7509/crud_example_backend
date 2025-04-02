@@ -6,9 +6,10 @@ import authRouter from './routes/auth.route.js';
 import userFormRouter from './routes/userform.route.js';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
-app.use(cors());
+
 
 app.use('/auth', authRouter)
 app.use('/post',userFormRouter )

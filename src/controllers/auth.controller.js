@@ -15,12 +15,11 @@ export const authSignup = async (req, res, next) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create and save new user
     const user = await new Auth({ email, password: hashedPassword }).save();
 
     res.status(201).json({ 
       message: "User registered successfully", 
-      userId: user._id,   // Sending userId explicitly
+      userId: user._id,   
       user 
     });
 
