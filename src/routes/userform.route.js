@@ -1,11 +1,12 @@
 import express from 'express';
+import checkToken from '../middleware/middleware.js';
 import { deleteUserForm, getUserForms, updateUserForm, userForm } from '../controllers/userform.controller.js';
 
 const userFormRouter = express.Router();
 
-userFormRouter.post('/user-form', userForm)
-userFormRouter.get('/user-detail/:userId', getUserForms)
-userFormRouter.put('/update-user/:userId', updateUserForm)
-userFormRouter.delete('/delete-form/:userId', deleteUserForm)
+userFormRouter.post('/user-form',checkToken, userForm)
+userFormRouter.get('/user-detail/:userId',checkToken, getUserForms)
+userFormRouter.put('/update-user/:userId',checkToken, updateUserForm)
+userFormRouter.delete('/delete-form/:userId',checkToken, deleteUserForm)
 
 export default userFormRouter;

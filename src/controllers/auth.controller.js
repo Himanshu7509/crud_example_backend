@@ -1,8 +1,8 @@
 import Auth from "../models/auth.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../lib/config.js";
 
-const JWT_SECRET = "your_secret_key";
 
 export const authSignup = async (req, res, next) => {
   try {
