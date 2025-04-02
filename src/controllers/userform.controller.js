@@ -18,6 +18,19 @@ export const userForm = async (req, res, next) => {
     }
 };
 
+export const getAllDetails = async(req, res, next) =>{
+    try {
+        const userForms = await UserForm.find({});
+        if (!userForms) {
+            return res.status(404).json({ message: "No forms found" });
+        }
+        res.status(200).json({ userForms });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Server error" });
+        }
+}
+
 export const getUserForms = async (req, res, next) => {
     try {
         const { userId } = req.params; 
